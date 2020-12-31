@@ -1,0 +1,4 @@
+" set guifont=JetBrainsMono\ NF:h16
+set guifont=Cascadia\ Mono:h14
+set lines=35 columns=125
+set guioptions=Ace

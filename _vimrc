@@ -1,34 +1,57 @@
 filetype off
 set encoding=utf-8
-set shellslash
-set rtp+=~/vimfiles/bundle/Vundle.vim
+" set shellslash
 
-call vundle#begin('~/vimfiles/bundle')
-Plugin 'VundleVim/Vundle.vim'
-
+call plug#begin('C:\Users\rize\vimfiles\plugged')
 " Themes
-Plugin 'gruvbox-community/gruvbox'
+Plug 'joshdick/onedark.vim'
 
-Plugin 'ycm-core/YouCompleteMe'
-
-" Formatter
-Plugin 'python/black'
+" AutoComplete
+Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ 
+" Formatters
+Plug 'psf/black', { 'branch': 'stable' }
 
 " Misc
-Plugin 'junegunn/fzf'
-Plugin 'preservim/nerdtree'
-Plugin 'itchyny/lightline.vim'
-Plugin 'preservim/nerdcommenter'
-Plugin 'mattn/emmet-vim'
-call vundle#end()
+Plug 'rust-lang/rust.vim'
+Plug 'junegunn/fzf'
+Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'mattn/emmet-vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+call plug#end()
+
+" set rtp+=~/vimfiles/bundle/Vundle.vim
+
+" call vundle#begin('~/vimfiles/bundle')
+" Plugin 'VundleVim/Vundle.vim'
+" 
+" " Themes
+" Plugin 'gruvbox-community/gruvbox'
+" Plugin 'joshdick/onedark.vim'
+" 
+" Plugin 'ycm-core/YouCompleteMe'
+" 
+" " Formatter
+" Plugin 'python/black'
+" 
+" " Misc
+" Plugin 'junegunn/fzf'
+" Plugin 'preservim/nerdtree'
+" Plugin 'itchyny/lightline.vim'
+" Plugin 'preservim/nerdcommenter'
+" Plugin 'mattn/emmet-vim'
+" call vundle#end()
 
 " YCM
-nmap <silent> gd :YcmCompleter GoToDefinition<CR>
+" nmap <silent> gd :YcmCompleter GoToDefinition<CR>
 
 let g:gruvbox_italic = 0
 
 filetype plugin indent on
-colorscheme gruvbox
+colorscheme onedark
 " Show lightline
 set nomousehide
 set laststatus=2
@@ -60,7 +83,7 @@ syntax on
 
 " Lightline
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'onedark',
   \ }
 
 " FZF
@@ -87,11 +110,15 @@ let g:rustfmt_autosave = 1
 autocmd BufWritePre *.py execute ':Black'
 
 " Javascript
-autocmd BufWritePre *.jsx execute ':YcmCompleter Format'
-autocmd BufWritePre *.js execute ':YcmCompleter Format'
-autocmd BufWritePre *.ts execute ':YcmCompleter Format'
-autocmd BufWritePre *.tsx execute ':YcmCompleter Format'
+" autocmd BufWritePre *.jsx execute ':YcmCompleter Format'
+" autocmd BufWritePre *.js execute ':YcmCompleter Format'
+" autocmd BufWritePre *.ts execute ':YcmCompleter Format'
+" autocmd BufWritePre *.tsx execute ':YcmCompleter Format'
 
 " Emmet
 let g:user_emmet_mode='n'
 let g:user_emmet_leader_key=','
+
+" Prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
